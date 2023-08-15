@@ -1,0 +1,37 @@
+Instructions are given as a 12-bit instruction
+
+cc rrr RRR dddd
+(without spaces)
+
+cc - 2-bit command.
+00 - ADD (adds the data in the two given registers)
+10 - MOVI (moves data to a register)
+01 - NEG (gets the two’s compliment)
+11 - JZR (jump command if the given register has 0000 to an instruction)
+
+rrr - Address of the register A
+RRR - Address of the register B
+
+000 - R0
+001 - R1
+010 - R2
+011 - R3
+100 - R4
+101 - R5
+110 - R6
+111 - R7
+
+dddd - 4-bit data.
+
+Output of Register 7 is displayed by the set of LEDs - LD0 , LD1 , LD2 , LD3.
+If the add/sub unit has all zeros, this is shown by LED - LD14.
+Overflow from the add/sub unit is displayed by the LED - LD15.
+7 segment display outputs the data stored in the register 7.
+And the segments are displayed accordingly - {seg[0] to seg[6]}
+7 segment display is mapped to the first display in the basys3 board - an[0].
+Zero and Overflow outputs are taken from the add/sub units. Therefore varies over each instruction.
+Reset is set to the button bttnC in the constraints
+
+Instructions are taken as soon as the nano processor functionalities start and the instructions can be set to start over by using the reset button. Reset button is able to reset the program counter, registers and other components.
+
+After instructions are taken from the programmable ROM, they are executed in order. 7 segment display, displays the stored data inside the register 7 and corresponding LEDs display the value.
