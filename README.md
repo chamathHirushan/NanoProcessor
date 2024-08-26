@@ -2,6 +2,20 @@
 
 This repository contains instructions and details for a custom 12-bit instruction set designed for a nano processor.
 
+# Nano-Processor-Design
+A Nano Processor designed to execute a basic set of instructions, featuring a 4-bit Add/Subtract unit, a 3-bit adder, a 3-bit Program Counter, and k-way b-bit multiplexers.
+
+
+| Instruction | Description | Format (12-bit instruction) |
+|-------------|-------------|-----------------------------|
+| MOVI R, d | Move immediate value d to register R, i.e., R ← d <br>R ∈ [0, 7], d ∈ [0, 15] | 1 0 R R R 0 0 0 d d d d |
+| ADD Ra, Rb | Add values in registers Ra and Rb and store the result in Ra, i.e., Ra ← Ra + Rb <br>Ra, Rb ∈ [0, 7] | 0 0 Ra Ra Ra Rb Rb Rb 0 0 0 0 |
+| NEG R | 2’s complement of registers R, i.e., R ← −R <br>R ∈ [0, 7] | 0 1 R R R 0 0 0 0 0 0 0 |
+| JZR R, d | Jump if value in register R is 0, i.e., <br>&nbsp;If R == 0 <br>&nbsp;&nbsp;&nbsp;PC ← d; <br>&nbsp;Else <br>&nbsp;&nbsp;&nbsp;PC ← PC + 1; <br>R ∈ [0, 7], d ∈ [0, 7] | 1 1 R R R 0 0 0 0 d d d |
+
+<br>
+<br>
+
 ## Instruction Format
 
 The instructions are structured as a 12-bit sequence:
